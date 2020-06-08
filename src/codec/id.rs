@@ -207,6 +207,8 @@ pub enum Id {
     SCREENPRESSO,
     RSCC,
 
+    AVS2,
+
     Y41P,
     AVRP,
     V012,
@@ -231,7 +233,6 @@ pub enum Id {
     YLC,
 
     // various PCM "codecs"
-    PCM_S16LE,
     PCM_S16BE,
     PCM_U16LE,
     PCM_U16BE,
@@ -298,7 +299,6 @@ pub enum Id {
     ADPCM_G722,
     ADPCM_IMA_APC,
     ADPCM_VIMA,
-    VIMA,
 
     ADPCM_AFC,
     ADPCM_IMA_OKI,
@@ -310,6 +310,7 @@ pub enum Id {
     ADPCM_AICA,
     ADPCM_IMA_DAT4,
     ADPCM_MTAF,
+    ADPCM_AGM,
 
     // AMR
     AMR_NB,
@@ -397,6 +398,7 @@ pub enum Id {
     PAF_AUDIO,
     ON2AVC,
     DSS_SP,
+    CODEC2,
 
     FFWAVESYNTH,
     SONIC,
@@ -414,7 +416,6 @@ pub enum Id {
     DST,
 
     // subtitle codecs
-    DVD_SUBTITLE,
     DVB_SUBTITLE,
     TEXT,
     XSUB,
@@ -440,8 +441,11 @@ pub enum Id {
     ASS,
     HDMV_TEXT_SUBTITLE,
 
+    TTML,
+    ARIB_CAPTION,
+    FIRST_UNKNOWN,
+
     // other specific kind of codecs (generally used for attachments)
-    TTF,
 
     SCTE_35,
     BINTEXT,
@@ -470,6 +474,7 @@ pub enum Id {
     AV1,
     PCM_F16LE,
     PCM_F24LE,
+    PCM_VIDC,
     ATRAC3AL,
     ATRAC3PAL,
 
@@ -479,8 +484,25 @@ pub enum Id {
     SVG,
     GDV,
     FITS,
+    IMM4,
+    PROSUMER,
+    MWSC,
+    WCMV,
+    RASC,
+    HYMT,
+    ARBC,
+    AGM,
+    LSCR,
+    VP4,
+    FIRST_AUDIO,
     GREMLIN_DPCM,
     DOLBY_E,
+    APTX,
+    APTX_HD,
+    SBC,
+    ATRAC9,
+    HCOM,
+    FIRST_SUBTITLE,
 }
 
 impl Id {
@@ -693,6 +715,8 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_SCREENPRESSO => Id::SCREENPRESSO,
             AV_CODEC_ID_RSCC => Id::RSCC,
 
+            AV_CODEC_ID_AVS2 => Id::AVS2,
+
             AV_CODEC_ID_Y41P => Id::Y41P,
             AV_CODEC_ID_AVRP => Id::AVRP,
             AV_CODEC_ID_012V => Id::V012,
@@ -717,7 +741,6 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_YLC => Id::YLC,
 
             /* various PCM "codecs" */
-            AV_CODEC_ID_PCM_S16LE => Id::PCM_S16LE,
             AV_CODEC_ID_PCM_S16BE => Id::PCM_S16BE,
             AV_CODEC_ID_PCM_U16LE => Id::PCM_U16LE,
             AV_CODEC_ID_PCM_U16BE => Id::PCM_U16BE,
@@ -795,6 +818,7 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_ADPCM_AICA => Id::ADPCM_AICA,
             AV_CODEC_ID_ADPCM_IMA_DAT4 => Id::ADPCM_IMA_DAT4,
             AV_CODEC_ID_ADPCM_MTAF => Id::ADPCM_MTAF,
+            AV_CODEC_ID_ADPCM_AGM => Id::ADPCM_AGM,
 
             /* AMR */
             AV_CODEC_ID_AMR_NB => Id::AMR_NB,
@@ -882,6 +906,7 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_PAF_AUDIO => Id::PAF_AUDIO,
             AV_CODEC_ID_ON2AVC => Id::ON2AVC,
             AV_CODEC_ID_DSS_SP => Id::DSS_SP,
+            AV_CODEC_ID_CODEC2 => Id::CODEC2,
 
             AV_CODEC_ID_FFWAVESYNTH => Id::FFWAVESYNTH,
             AV_CODEC_ID_SONIC => Id::SONIC,
@@ -899,7 +924,6 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_DST => Id::DST,
 
             /* subtitle codecs */
-            AV_CODEC_ID_DVD_SUBTITLE => Id::DVD_SUBTITLE,
             AV_CODEC_ID_DVB_SUBTITLE => Id::DVB_SUBTITLE,
             AV_CODEC_ID_TEXT => Id::TEXT,
             AV_CODEC_ID_XSUB => Id::XSUB,
@@ -924,9 +948,11 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_PJS => Id::PJS,
             AV_CODEC_ID_ASS => Id::ASS,
             AV_CODEC_ID_HDMV_TEXT_SUBTITLE => Id::HDMV_TEXT_SUBTITLE,
+            AV_CODEC_ID_TTML => Id::TTML,
+            AV_CODEC_ID_ARIB_CAPTION => Id::ARIB_CAPTION,
+            AV_CODEC_ID_FIRST_UNKNOWN => Id::FIRST_UNKNOWN,
 
             /* other specific kind of codecs (generally used for attachments) */
-            AV_CODEC_ID_TTF => Id::TTF,
 
             AV_CODEC_ID_SCTE_35 => Id::SCTE_35,
             AV_CODEC_ID_BINTEXT => Id::BINTEXT,
@@ -954,6 +980,7 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_AV1 => Id::AV1,
             AV_CODEC_ID_PCM_F16LE => Id::PCM_F16LE,
             AV_CODEC_ID_PCM_F24LE => Id::PCM_F24LE,
+            AV_CODEC_ID_PCM_VIDC => Id::PCM_VIDC,
             AV_CODEC_ID_ATRAC3AL => Id::ATRAC3AL,
             AV_CODEC_ID_ATRAC3PAL => Id::ATRAC3PAL,
 
@@ -963,8 +990,26 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_SVG => Id::SVG,
             AV_CODEC_ID_GDV => Id::GDV,
             AV_CODEC_ID_FITS => Id::FITS,
+            AV_CODEC_ID_IMM4 => Id::IMM4,
+            AV_CODEC_ID_PROSUMER => Id::PROSUMER,
+            AV_CODEC_ID_MWSC => Id::MWSC,
+            AV_CODEC_ID_WCMV => Id::WCMV,
+            AV_CODEC_ID_RASC => Id::RASC,
+            AV_CODEC_ID_HYMT => Id::HYMT,
+            AV_CODEC_ID_ARBC => Id::ARBC,
+            AV_CODEC_ID_AGM => Id::AGM,
+            AV_CODEC_ID_LSCR => Id::LSCR,
+            AV_CODEC_ID_VP4 => Id::VP4,
+            AV_CODEC_ID_FIRST_AUDIO => Id::FIRST_AUDIO,
             AV_CODEC_ID_GREMLIN_DPCM => Id::GREMLIN_DPCM,
             AV_CODEC_ID_DOLBY_E => Id::DOLBY_E,
+
+            AV_CODEC_ID_APTX => Id::APTX,
+            AV_CODEC_ID_APTX_HD => Id::APTX_HD,
+            AV_CODEC_ID_SBC => Id::SBC,
+            AV_CODEC_ID_ATRAC9 => Id::ATRAC9,
+            AV_CODEC_ID_HCOM => Id::HCOM,
+            AV_CODEC_ID_FIRST_SUBTITLE => Id::FIRST_SUBTITLE,
         }
     }
 }
@@ -1171,6 +1216,8 @@ impl Into<AVCodecID> for Id {
             Id::SCREENPRESSO => AV_CODEC_ID_SCREENPRESSO,
             Id::RSCC => AV_CODEC_ID_RSCC,
 
+            Id::AVS2 => AV_CODEC_ID_AVS2,
+
             Id::Y41P => AV_CODEC_ID_Y41P,
             Id::AVRP => AV_CODEC_ID_AVRP,
             Id::V012 => AV_CODEC_ID_012V,
@@ -1195,7 +1242,6 @@ impl Into<AVCodecID> for Id {
             Id::YLC => AV_CODEC_ID_YLC,
 
             /* various PCM "codecs" */
-            Id::PCM_S16LE => AV_CODEC_ID_PCM_S16LE,
             Id::PCM_S16BE => AV_CODEC_ID_PCM_S16BE,
             Id::PCM_U16LE => AV_CODEC_ID_PCM_U16LE,
             Id::PCM_U16BE => AV_CODEC_ID_PCM_U16BE,
@@ -1262,7 +1308,6 @@ impl Into<AVCodecID> for Id {
             Id::ADPCM_G722 => AV_CODEC_ID_ADPCM_G722,
             Id::ADPCM_IMA_APC => AV_CODEC_ID_ADPCM_IMA_APC,
             Id::ADPCM_VIMA => AV_CODEC_ID_ADPCM_VIMA,
-            Id::VIMA => AV_CODEC_ID_VIMA,
 
             Id::ADPCM_AFC => AV_CODEC_ID_ADPCM_AFC,
             Id::ADPCM_IMA_OKI => AV_CODEC_ID_ADPCM_IMA_OKI,
@@ -1274,6 +1319,7 @@ impl Into<AVCodecID> for Id {
             Id::ADPCM_AICA => AV_CODEC_ID_ADPCM_AICA,
             Id::ADPCM_IMA_DAT4 => AV_CODEC_ID_ADPCM_IMA_DAT4,
             Id::ADPCM_MTAF => AV_CODEC_ID_ADPCM_MTAF,
+            Id::ADPCM_AGM => AV_CODEC_ID_ADPCM_AGM,
 
             /* AMR */
             Id::AMR_NB => AV_CODEC_ID_AMR_NB,
@@ -1361,6 +1407,7 @@ impl Into<AVCodecID> for Id {
             Id::PAF_AUDIO => AV_CODEC_ID_PAF_AUDIO,
             Id::ON2AVC => AV_CODEC_ID_ON2AVC,
             Id::DSS_SP => AV_CODEC_ID_DSS_SP,
+            Id::CODEC2 => AV_CODEC_ID_CODEC2,
 
             Id::FFWAVESYNTH => AV_CODEC_ID_FFWAVESYNTH,
             Id::SONIC => AV_CODEC_ID_SONIC,
@@ -1378,7 +1425,6 @@ impl Into<AVCodecID> for Id {
             Id::DST => AV_CODEC_ID_DST,
 
             /* subtitle codecs */
-            Id::DVD_SUBTITLE => AV_CODEC_ID_DVD_SUBTITLE,
             Id::DVB_SUBTITLE => AV_CODEC_ID_DVB_SUBTITLE,
             Id::TEXT => AV_CODEC_ID_TEXT,
             Id::XSUB => AV_CODEC_ID_XSUB,
@@ -1404,8 +1450,11 @@ impl Into<AVCodecID> for Id {
             Id::ASS => AV_CODEC_ID_ASS,
             Id::HDMV_TEXT_SUBTITLE => AV_CODEC_ID_HDMV_TEXT_SUBTITLE,
 
+            Id::TTML => AV_CODEC_ID_TTML,
+            Id::ARIB_CAPTION => AV_CODEC_ID_ARIB_CAPTION,
+            Id::FIRST_UNKNOWN => AV_CODEC_ID_FIRST_UNKNOWN,
+
             /* other specific kind of codecs (generally used for attachments) */
-            Id::TTF => AV_CODEC_ID_TTF,
 
             Id::SCTE_35 => AV_CODEC_ID_SCTE_35,
             Id::BINTEXT => AV_CODEC_ID_BINTEXT,
@@ -1434,6 +1483,7 @@ impl Into<AVCodecID> for Id {
             Id::AV1 => AV_CODEC_ID_AV1,
             Id::PCM_F16LE => AV_CODEC_ID_PCM_F16LE,
             Id::PCM_F24LE => AV_CODEC_ID_PCM_F24LE,
+            Id::PCM_VIDC => AV_CODEC_ID_PCM_VIDC,
             Id::ATRAC3AL => AV_CODEC_ID_ATRAC3AL,
             Id::ATRAC3PAL => AV_CODEC_ID_ATRAC3PAL,
 
@@ -1443,8 +1493,26 @@ impl Into<AVCodecID> for Id {
             Id::SVG => AV_CODEC_ID_SVG,
             Id::GDV => AV_CODEC_ID_GDV,
             Id::FITS => AV_CODEC_ID_FITS,
+            Id::IMM4 => AV_CODEC_ID_IMM4,
+            Id::PROSUMER => AV_CODEC_ID_PROSUMER,
+            Id::MWSC => AV_CODEC_ID_MWSC,
+            Id::WCMV => AV_CODEC_ID_WCMV,
+            Id::RASC => AV_CODEC_ID_RASC,
+            Id::HYMT => AV_CODEC_ID_HYMT,
+            Id::ARBC => AV_CODEC_ID_ARBC,
+            Id::AGM => AV_CODEC_ID_AGM,
+            Id::LSCR => AV_CODEC_ID_LSCR,
+            Id::VP4 => AV_CODEC_ID_VP4,
+            Id::FIRST_AUDIO => AV_CODEC_ID_FIRST_AUDIO,
             Id::GREMLIN_DPCM => AV_CODEC_ID_GREMLIN_DPCM,
             Id::DOLBY_E => AV_CODEC_ID_DOLBY_E,
+
+            Id::APTX => AV_CODEC_ID_APTX,
+            Id::APTX_HD => AV_CODEC_ID_APTX_HD,
+            Id::SBC => AV_CODEC_ID_SBC,
+            Id::ATRAC9 => AV_CODEC_ID_ATRAC9,
+            Id::HCOM => AV_CODEC_ID_HCOM,
+            Id::FIRST_SUBTITLE => AV_CODEC_ID_FIRST_SUBTITLE,
         }
     }
 }

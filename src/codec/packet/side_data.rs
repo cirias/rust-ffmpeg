@@ -33,6 +33,10 @@ pub enum Type {
 
     ContentLightLevel,
     A53CC,
+
+    ENCRYPTION_INIT_INFO,
+    ENCRYPTION_INFO,
+    AFD,
 }
 
 impl From<AVPacketSideDataType> for Type {
@@ -64,6 +68,9 @@ impl From<AVPacketSideDataType> for Type {
 
             AV_PKT_DATA_CONTENT_LIGHT_LEVEL => Type::ContentLightLevel,
             AV_PKT_DATA_A53_CC => Type::A53CC,
+    AV_PKT_DATA_ENCRYPTION_INIT_INFO => Type::ENCRYPTION_INIT_INFO,
+    AV_PKT_DATA_ENCRYPTION_INFO => Type::ENCRYPTION_INFO,
+    AV_PKT_DATA_AFD => Type::AFD,
         }
     }
 }
@@ -97,6 +104,10 @@ impl Into<AVPacketSideDataType> for Type {
 
             Type::ContentLightLevel => AV_PKT_DATA_CONTENT_LIGHT_LEVEL,
             Type::A53CC => AV_PKT_DATA_A53_CC,
+
+            Type::ENCRYPTION_INIT_INFO => AV_PKT_DATA_ENCRYPTION_INIT_INFO,
+            Type::ENCRYPTION_INFO => AV_PKT_DATA_ENCRYPTION_INFO,
+            Type::AFD => AV_PKT_DATA_AFD,
         }
     }
 }

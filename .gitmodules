@@ -1,0 +1,3 @@
+[submodule "rust-ffmpeg-sys"]
+	path = rust-ffmpeg-sys
+	url = git@github.com:cirias/rust-ffmpeg-sys.git
