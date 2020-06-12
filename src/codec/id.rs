@@ -446,7 +446,6 @@ pub enum Id {
     FIRST_UNKNOWN,
 
     // other specific kind of codecs (generally used for attachments)
-
     SCTE_35,
     BINTEXT,
     XBIN,
@@ -953,7 +952,6 @@ impl From<AVCodecID> for Id {
             AV_CODEC_ID_FIRST_UNKNOWN => Id::FIRST_UNKNOWN,
 
             /* other specific kind of codecs (generally used for attachments) */
-
             AV_CODEC_ID_SCTE_35 => Id::SCTE_35,
             AV_CODEC_ID_BINTEXT => Id::BINTEXT,
             AV_CODEC_ID_XBIN => Id::XBIN,
@@ -1455,7 +1453,6 @@ impl Into<AVCodecID> for Id {
             Id::FIRST_UNKNOWN => AV_CODEC_ID_FIRST_UNKNOWN,
 
             /* other specific kind of codecs (generally used for attachments) */
-
             Id::SCTE_35 => AV_CODEC_ID_SCTE_35,
             Id::BINTEXT => AV_CODEC_ID_BINTEXT,
             Id::XBIN => AV_CODEC_ID_XBIN,

@@ -99,12 +99,12 @@ impl Packet {
 
     #[inline]
     pub fn is_key(&self) -> bool {
-        self.flags().contains(flag::KEY)
+        self.flags().contains(flag::Flags::KEY)
     }
 
     #[inline]
     pub fn is_corrupt(&self) -> bool {
-        self.flags().contains(flag::CORRUPT)
+        self.flags().contains(flag::Flags::CORRUPT)
     }
 
     #[inline]

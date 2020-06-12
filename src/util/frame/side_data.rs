@@ -68,9 +68,9 @@ impl From<AVFrameSideDataType> for Type {
             AV_FRAME_DATA_ICC_PROFILE => Type::IccProfile,
 
             AV_FRAME_DATA_QP_TABLE_PROPERTIES => Type::QP_TABLE_PROPERTIES,
-            AV_FRAME_DATA_QP_TABLE_DATA       => Type::QP_TABLE_DATA      ,
-            AV_FRAME_DATA_S12M_TIMECODE       => Type::S12M_TIMECODE      ,
-            AV_FRAME_DATA_DYNAMIC_HDR_PLUS    => Type::DYNAMIC_HDR_PLUS   ,
+            AV_FRAME_DATA_QP_TABLE_DATA => Type::QP_TABLE_DATA,
+            AV_FRAME_DATA_S12M_TIMECODE => Type::S12M_TIMECODE,
+            AV_FRAME_DATA_DYNAMIC_HDR_PLUS => Type::DYNAMIC_HDR_PLUS,
             AV_FRAME_DATA_REGIONS_OF_INTEREST => Type::REGIONS_OF_INTEREST,
         }
     }
@@ -99,9 +99,9 @@ impl Into<AVFrameSideDataType> for Type {
             Type::IccProfile => AV_FRAME_DATA_ICC_PROFILE,
 
             Type::QP_TABLE_PROPERTIES => AV_FRAME_DATA_QP_TABLE_PROPERTIES,
-            Type::QP_TABLE_DATA       => AV_FRAME_DATA_QP_TABLE_DATA      ,
-            Type::S12M_TIMECODE       => AV_FRAME_DATA_S12M_TIMECODE      ,
-            Type::DYNAMIC_HDR_PLUS    => AV_FRAME_DATA_DYNAMIC_HDR_PLUS   ,
+            Type::QP_TABLE_DATA => AV_FRAME_DATA_QP_TABLE_DATA,
+            Type::S12M_TIMECODE => AV_FRAME_DATA_S12M_TIMECODE,
+            Type::DYNAMIC_HDR_PLUS => AV_FRAME_DATA_DYNAMIC_HDR_PLUS,
             Type::REGIONS_OF_INTEREST => AV_FRAME_DATA_REGIONS_OF_INTEREST,
         }
     }

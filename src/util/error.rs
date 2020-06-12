@@ -119,7 +119,10 @@ impl From<Error> for io::Error {
 
 impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> Result<(), fmt::Error> {
-        f.write_str(error::Error::description(self))
+        let s = unsafe {
+            from_utf8_unchecked(CStr::from_ptr(STRINGS[index(self)].as_ptr()).to_bytes())
+        };
+        f.write_str(s)
     }
 }
 
@@ -312,8 +315,4 @@ pub fn register_all() {
     }
 }
 
-impl error::Error for Error {
-    fn description(&self) -> &str {
-        unsafe { from_utf8_unchecked(CStr::from_ptr(STRINGS[index(self)].as_ptr()).to_bytes()) }
-    }
-}
+impl error::Error for Error {}

@@ -203,7 +203,6 @@ pub enum Pixel {
     VIDEOTOOLBOX,
 
     // --- defaults
-
     RGB32,
     RGB32_1,
     BGR32,
@@ -465,7 +464,6 @@ impl From<AVPixelFormat> for Pixel {
             AV_PIX_FMT_BGRA64LE => Pixel::BGRA64LE,
 
             AV_PIX_FMT_YVYU422 => Pixel::YVYU422,
-
 
             AV_PIX_FMT_YA16BE => Pixel::YA16BE,
             AV_PIX_FMT_YA16LE => Pixel::YA16LE,
@@ -771,7 +769,6 @@ impl Into<AVPixelFormat> for Pixel {
             Pixel::VIDEOTOOLBOX => AV_PIX_FMT_VIDEOTOOLBOX,
 
             // --- defaults
-
             Pixel::RGB32 => AV_PIX_FMT_RGB32,
             Pixel::RGB32_1 => AV_PIX_FMT_RGB32_1,
             Pixel::BGR32 => AV_PIX_FMT_BGR32,
@@ -878,14 +875,7 @@ impl fmt::Display for ParsePixelError {
 }
 
 impl error::Error for ParsePixelError {
-    fn description(&self) -> &str {
-        match *self {
-            ParsePixelError::NulError(ref e) => e.description(),
-            ParsePixelError::UnknownFormat => "unknown pixel format",
-        }
-    }
-
-    fn cause(&self) -> Option<&error::Error> {
+    fn cause(&self) -> Option<&dyn error::Error> {
         match *self {
             ParsePixelError::NulError(ref e) => Some(e),
             ParsePixelError::UnknownFormat => None,
